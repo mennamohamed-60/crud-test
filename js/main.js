@@ -5,6 +5,10 @@ var  category = document.getElementById("category");
 var  description = document.getElementById("description");
 
 var allProducts = [];
+ allProducts = JSON.parse(localStorage.getItem('products')) || [ ];
+displayAllProducts ();
+
+
 function addProduct(){
 
     
@@ -16,6 +20,7 @@ function addProduct(){
     }
 
     allProducts.push(product);
+    localStorage.setItem("products", JSON.stringify(allProducts));
     console.log(allProducts );
 
 
@@ -91,6 +96,7 @@ function deleteProduct(index){
     
     
     allProducts.splice(index ,1);
+    localStorage.setItem("products", JSON.stringify(allProducts));
     displayAllProducts();
 
     console.log(allProducts);
@@ -143,6 +149,7 @@ function add_Updated_Product(index) {
 
     
     displayAllProducts();
+    localStorage.setItem("products", JSON.stringify(allProducts));
     clearAll();
 
     
